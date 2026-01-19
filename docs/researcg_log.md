@@ -14,18 +14,51 @@
 		Design based on the Q-learning method, instead of accessing each action of joints, pay attention to the action trunk and adjusting TD based algorithm to make unbiased n-step backups more stable
         
 ## [2026-01-19] Environment Setup & Code Deconstruction
-- **Status:** 🔴 In Progress
-- **Today's Goal:** Successfully install DSRL dependencies and run `dsrl_can.yaml` inference.
+- Successfully connect cloud server
+- DSRL dependencies 
+  - conda env python 3.9 :white_check_mark:
+  - dppo :white_check_mark:
+  - robomimic :x:
+  - gym :x:
+The reason why these two environment fail is that they all relies on MuJoCo. I encountered development problem.
+```bash
+Successfully built dppo robosuite
+Failed to build mujoco
+ERROR: ERROR: Failed to build installable wheels for some pyproject.toml based projects (mujoco)
+```
+The set up instruction in git requires 
+```bash
+pip install -e ".[robomimic]"
+pip install -e ".[gym]"
+```
+they will try to develop mujoco automatically, but they use mujoco_py at 2021, this will lead to mujoco, there are conflicts between mujoco_py and mujoco, causing error.
 
-### 📝 Implementation Notes
-- **DSRL Repo Analysis:**
-    - Core logic is in `train_dsrl.py`.
-    - It uses a specialized fork of `Stable Baselines3` for the latent optimization.
-- **Environment Progress:**
-    - [x] Conda env created (Python 3.9).
-    - [ ] `pip install -e .` for DPPO fork (Investigating dependency conflict with `numpy`).
+Bug status: [solved] :white_check_mark:
+I tried to add the mujoco210 into environment path, and jump the mujoco dvelop in -e" ".
+- run `dsrl_can.yaml` inference.
+- outcome: 
+```bash
+wandb: Currently logged in as: wenkai001 (wenkai001-nanyang-technological-university-singapore). Use `wandb login --relogin` to force relogin
+wandb: wandb version 0.24.0 is available!  To upgrade, please run:
+wandb:  $ pip install wandb --upgrade
+wandb: Tracking run with wandb version 0.17.7
+wandb: Run data is saved locally in /home/wenkai001/ssd/ziming/dsrl/wandb/run-20260119_234516-l9c9r8jx
+wandb: Run `wandb offline` to turn off syncing.
+wandb: Syncing run robomimic_can_dsrl_2026-01-19_23-45-15_1
+wandb: ⭐️ View project at https://wandb.ai/wenkai001-nanyang-technological-university-singapore/dsrl
+wandb: 🚀 View run at https://wandb.ai/wenkai001-nanyang-technological-university-singapore/dsrl/runs/l9c9r8jx
+[2026-01-19 23:45:20,372][root][INFO] - Number of network parameters: 575564
+Error executing job with overrides: []
+Error in call to target 'model.diffusion.diffusion_eval.DiffusionEval':
+FileNotFoundError(2, 'No such file or directory')
+full_key: model
 
-### 💡 Thoughts & Reflections
-- **Residual RL logic:** After reading the README, I realize the "steering" happens at the noise sampling stage, not the action chunking stage. I need to consider how to align this with the ACT-style action trunks.
+Set the environment variable HYDRA_FULL_ERROR=1 for a complete stack trace.
+wandb: 🚀 View run robomimic_can_dsrl_2026-01-19_23-45-15_1 at: https://wandb.ai/wenkai001-nanyang-technological-university-singapore/dsrl/runs/l9c9r8jx
+wandb: ⭐️ View project at: https://wandb.ai/wenkai001-nanyang-technological-university-singapore/dsrl
+wandb: Synced 6 W&B file(s), 0 media file(s), 0 artifact file(s) and 1 other file(s)
+wandb: Find logs at: ./wandb/run-20260119_234516-l9c9r8jx/logs
+wandb: WARNING The new W&B backend becomes opt-out in version 0.18.0; try it out with `wandb.require("core")`! See https://wandb.me/wandb-core for more information.
+```
+basiclly set up accessable environment, but need hfm demo video to train.
 
----
