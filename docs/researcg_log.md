@@ -60,5 +60,9 @@ wandb: Synced 6 W&B file(s), 0 media file(s), 0 artifact file(s) and 1 other fil
 wandb: Find logs at: ./wandb/run-20260119_234516-l9c9r8jx/logs
 wandb: WARNING The new W&B backend becomes opt-out in version 0.18.0; try it out with `wandb.require("core")`! See https://wandb.me/wandb-core for more information.
 ```
-basiclly set up accessable environment, but need hfm demo video to train.
+basiclly set up accessable environment, but need hfm5 demo video to train.
 
+## [2026-01-20] Environment test and Meeting
+
+- Meet with prof Ziwei and report my progress and schedule
+- test one shallow video, tried to run, but failed due to the path error. Tries to include correct path into origin yaml file.
