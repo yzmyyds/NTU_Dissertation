@@ -62,7 +62,15 @@ wandb: WARNING The new W&B backend becomes opt-out in version 0.18.0; try it out
 ```
 basiclly set up accessable environment, but need hfm5 demo video to train.
 
-## [2026-01-20] Environment test and Meeting
+## [2026-01-20] Environment test & Meeting
 
 - Meet with prof Ziwei and report my progress and schedule
 - test one shallow video, tried to run, but failed due to the path error. Tries to include correct path into origin yaml file.
+
+## [2026-01-21] RL with can task Run Successfully & Learning
+
+- Debugging
+  1. Firstly, I added the video into dataset, but there still returns error of ```FileNotFoundError```. Checking the the instruction note in DSRL github web, I found that I forgot to add the pretrained diffusion weight parameters into corresponding position (```cfg/robomimic-pretrain/can/can_pre_diffusion_mlp_ta4_td20/2024-06-28_13-29-54/checkpoint/state_5000.pt```). Only included npz and pt files correctly, the first check of program runs.
+  2. Adding files, the yaml runs, but still had error. It still related to the mujoco edition problem. So I tried to make a fake mujoco which could let the program to find mujoco_py stead of mujoco. Because if program didn't find mujoco, pip would be called to re-download instead of using mujoco_py. However, I failed since there are plenty of port different between new and old edition. Finally, I reloaded the conda env and installed the mujoco-3.2.2. After doing this, the DSRL runs successfully. :fireworks:
+- Learning
+  After searching on the webset, I decide to use the book "EasyRL" to fulfill my basic knowledge about RL.
