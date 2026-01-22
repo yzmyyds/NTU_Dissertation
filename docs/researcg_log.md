@@ -74,3 +74,12 @@ basiclly set up accessable environment, but need hfm5 demo video to train.
   2. Adding files, the yaml runs, but still had error. It still related to the mujoco edition problem. So I tried to make a fake mujoco which could let the program to find mujoco_py stead of mujoco. Because if program didn't find mujoco, pip would be called to re-download instead of using mujoco_py. However, I failed since there are plenty of port different between new and old edition. Finally, I reloaded the conda env and installed the mujoco-3.2.2. After doing this, the DSRL runs successfully. :fireworks:
 - Learning
   After searching on the webset, I decide to use the book "EasyRL" to fulfill my basic knowledge about RL.
+
+## [2026-01-22] Get Performance of can Task
+
+- After about 20h running, the model had evoluted 132M epoch. The performance:
+![can Task Result](can_wandb.png)
+Key Evaluation Metric:
+  - reward: -86.0
+  - success_rate: 0.955
+- 
