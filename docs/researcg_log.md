@@ -82,4 +82,37 @@ basiclly set up accessable environment, but need hfm5 demo video to train.
 Key Evaluation Metric:
   - reward: -86.0
   - success_rate: 0.955
-- 
+- Implement the zshrc file to add wandb account switch configuation.
+  ```bash
+  choose_wandb_account() {
+  case "${WANDB_ACCOUNT:-}" in
+    wenkai) export WANDB_API_KEY="22cebf0bb161d48464c99389b6228820abbfbb1e"; echo "WANDB: wenkai"; return;;
+    jiarui) export WANDB_API_KEY="0957abdb0d515ff4cbfb603ecb02f5501bba1c39"; echo "WANDB: jiarui"; return;;
+    haoyuan) export WANDB_API_KEY="0957abdb0d515ff4cbfb603ecb02f5501bba1c39"; echo "WANDB: haoyuan"; return;;
+    jingyi) export WANDB_API_KEY="b7d0464a10ce268a89c509fcac73a89e153cf6c4"; echo "WANDB: jingyi"; return;;
+    yukun) export WANDB_API_KEY="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"; echo "WANDB: yukun"; return;;
+  esac
+  if is_interactive; then
+    echo "请选择 wandb 账户:"
+    echo "1) wenkai"
+    echo "2) jiarui"
+    echo "3) haoyuan"
+    echo "4) jingyi"
+    echo "5) yukun"
+    read -p "输入序号: " choice
+    case "$choice" in
+      1) export WANDB_API_KEY="22cebf0bb161d48464c99389b6228820abbfbb1e"; echo "WANDB: wenkai" ;;
+      2) export WANDB_API_KEY="0957abdb0d515ff4cbfb603ecb02f5501bba1c39"; echo "WANDB: jiarui" ;;
+      3) export WANDB_API_KEY="0957abdb0d515ff4cbfb603ecb02f5501bba1c39"; echo "WANDB: haoyuan" ;;
+      4) export WANDB_API_KEY="b7d0464a10ce268a89c509fcac73a89e153cf6c4"; echo "WANDB: jingyi" ;;
+      5) export WANDB_API_KEY="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"; echo "WANDB: yukun" ;;
+      *) export WANDB_API_KEY="22cebf0bb161d48464c99389b6228820abbfbb1e"; echo "WANDB: default=wenkai" ;;
+    esac
+  else
+    export WANDB_API_KEY="22cebf0bb161d48464c99389b6228820abbfbb1e"
+  fi
+  }
+  is_interactive && choose_wandb_account
+  export OPENBLAS_NUM_THREADS=1
+  export OMP_NUM_THREADS=1 
+```
