@@ -78,7 +78,7 @@ basiclly set up accessable environment, but need hfm5 demo video to train.
 ## [2026-01-22] Get Performance of can Task
 
 - After about 20h running, the model had evoluted 132M epoch. The performance:
-![can Task Result](can_wandb.png)
+![can_eval WandB](can_wandb.png)
 Key Evaluation Metric:
   - reward: -86.0
   - success_rate: 0.955
@@ -115,4 +115,9 @@ Key Evaluation Metric:
   is_interactive && choose_wandb_account
   export OPENBLAS_NUM_THREADS=1
   export OMP_NUM_THREADS=1 
-```
+
+## [2026-01-23] Finish lift Task & Begin square Task
+- The outcome of lift task:
+  ![lift_eval WandB](lift_wandb.png)
+  The lift task is the easiest task among four test tasks, its convergence speed is most fast as shown in above figure.
+- 
