@@ -120,4 +120,4 @@ Key Evaluation Metric:
 - The outcome of lift task:
   ![lift_eval WandB](lift_wandb.png)
   The lift task is the easiest task among four test tasks, its convergence speed is most fast as shown in above figure.
-- 
+- Running the square task, due to its complexity, the training time will be. uch longer than lift.
