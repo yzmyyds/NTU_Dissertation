@@ -125,9 +125,11 @@ Key Evaluation Metric:
 ## [2026-01-24] Encounter Problem for square Task
 - After training for about 28h, the success_rate still keeps 0, even no fluctuation, as shown in the following graph.
   ![square_eval_v1 WandB](square_wandb_v1.png)
-  After analyzing and reviewing the paper, I get the rough conclusion that the model didn't wrong, because the loss line is changing, the model have tried to teach how to do square task correctly. All in all, I get 2 possibilities:
+  After analyzing and reviewing the paper, I get the rough conclusion:
+  The model didn't wrong, because the loss line is changing, the model have tried to teach how to do square task correctly.
+  ![square_loss_wandb_v1](square_loss_wandb_v1.png) All in all, I get 2 possibilities:
   1. As paper mentioned, square task is too complex compared with lift and can, so they added the ```train_offline.npz```, 32000 steps trained data to decrease the time needed, The missing of data may lead to low success rate.
   2. The given ```env.max_episode_steps``` is 300, which is appropriate, but may cause this situation: when the grip went to correct position and want to put the object down, the max step reached, which will be considered as the failure. Actually, it may succeed if we allowed it to continue. 
-  After checking, the 1^{st} is passed, I do added the npz file. Therefore, I need to check 2 senario. The adding of max step is to limit the robotic arm in real world, avoiding the danger (out of joint range). But in simulation, we could set it longer. Therefore, I changed it to 1600. Though,the time consumed for each step is much longer, I just need to run several steps to compare with origin to figure out whether it affect or not.
+  After checking, the $1^{st}$ is passed, I do added the npz file. Therefore, I need to check 2 senario. The adding of max step is to limit the robotic arm in real world, avoiding the danger (out of joint range). But in simulation, we could set it longer. Therefore, I changed it to 1600. Though,the time consumed for each step is much longer, I just need to run several steps to compare with origin to figure out whether it affect or not.
   I need to wait until tomorrow.
 - While the reproduction encountered difficulties, I need to wait for result for next step, I learn the MDP and read code instead.  
