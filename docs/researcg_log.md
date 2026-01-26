@@ -133,3 +133,27 @@ Key Evaluation Metric:
   After checking, the $1^{st}$ is passed, I do added the npz file. Therefore, I need to check 2 senario. The adding of max step is to limit the robotic arm in real world, avoiding the danger (out of joint range). But in simulation, we could set it longer. Therefore, I changed it to 1600. Though,the time consumed for each step is much longer, I just need to run several steps to compare with origin to figure out whether it affect or not.
   I need to wait until tomorrow.
 - While the reproduction encountered difficulties, I need to wait for result for next step, I learn the MDP and read code instead.  
+
+## [2026-01-26] Comparition & Analyze
+
+With 2 days running, there comes a good new that my assumption is right.
+
+According to recent 20 steps, the evaluation rate has increased from around 0.8 to around 0.9, the lowest success rate is 0.5, which proves that the max step do effect and limit the success possibilities. Its initial success rate is over 0 as while (0.5), which proves the useness of train_offline data. 
+
+| Category | Metric            | Value    |
+|----------|-------------------|----------|
+| rollout  | ep_len_mean       | 400      |
+| rollout  | ep_rew_mean       | -290     |
+| time     | episodes          | 1796     |
+| time     | fps               | 3        |
+| time     | time_elapsed      | 186271   |
+| time     | total_timesteps   | 723200   |
+| train    | actor_loss        | -2.29e+03|
+| train    | critic_loss       | 1.63e+05 |
+| train    | ent_coef          | 1.65     |
+| train    | ent_coef_loss     | -0.104   |
+| train    | learning_rate     | 0.0003   |
+| train    | n_updates         | 903980   |
+| train    | noise_critic_loss | 1.98e+05 |
+
+Above is the log of most recent training. Due to the complexity of square task and limitation of GPU, the fps is low, which requires more time to get acceptable success rate performance.
