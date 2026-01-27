@@ -157,3 +157,7 @@ According to recent 20 steps, the evaluation rate has increased from around 0.8 
 | train    | noise_critic_loss | 1.98e+05 |
 
 Above is the log of most recent training. Due to the complexity of square task and limitation of GPU, the fps is low, which requires more time to get acceptable success rate performance.
+
+## [2026-01-27] Convergence of square Task
+Though, the success rate of square task didn't become stable, its rate has increased intensively compared with yesterday. In addiition, the trend of success line is apperantly going up. In my opinion, the square task roughly succeed.
+![square_eval WandB](square_wandb.png)
