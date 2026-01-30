@@ -161,3 +161,13 @@ Above is the log of most recent training. Due to the complexity of square task a
 ## [2026-01-27] Convergence of square Task
 Though, the success rate of square task didn't become stable, its rate has increased intensively compared with yesterday. In addiition, the trend of success line is apperantly going up. In my opinion, the square task roughly succeed.
 ![square_eval WandB](square_wandb.png)
+
+## [2026-01-30] Idea of Next Step
+With the suggestion of mentor Wenkai, I want to combine the dsrl property with a vla model. Because the paper only analyze the bility of dsrl getting appropriate action trucnk with reduced computation ability with latent action space method. What I want to do is adding similar method to vla models to increase their performance.
+The procedure I roughly designed:
+
+1. Choose appropriate vla model ($\pi 0$, GROOT ...) 
+2. Run the vla model with simulation, robomimic to get baseline
+3. Add the dsrl method to vla (maybe convert from diffusion to flow matching)
+4. If succeed, compare to analyze the effect.
+5. Transmit to real world. 
