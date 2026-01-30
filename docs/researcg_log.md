@@ -162,6 +162,11 @@ Above is the log of most recent training. Due to the complexity of square task a
 Though, the success rate of square task didn't become stable, its rate has increased intensively compared with yesterday. In addiition, the trend of success line is apperantly going up. In my opinion, the square task roughly succeed.
 ![square_eval WandB](square_wandb.png)
 
+## [2026-01-29] Learn ROS2 & Develop Infrastructure
+After finishing the robomimic simulation tasks, the next step is to transmit dsrl to real world. The control of robotic arm in lab needs ROS2 system. Therefore, I begin learning ROS2 and finish the infrastructure on server.
+
+__Development Cycle:__ Successfully executed the standard ROS2 development loop: Modify Code → colcon build → source → ros2 run.
+
 ## [2026-01-30] Idea of Next Step
 With the suggestion of mentor Wenkai, I want to combine the dsrl property with a vla model. Because the paper only analyze the bility of dsrl getting appropriate action trucnk with reduced computation ability with latent action space method. What I want to do is adding similar method to vla models to increase their performance.
 The procedure I roughly designed:
