@@ -176,3 +176,14 @@ The procedure I roughly designed:
 3. Add the dsrl method to vla (maybe convert from diffusion to flow matching)
 4. If succeed, compare to analyze the effect.
 5. Transmit to real world. 
+
+## [2026-02-26]
+Record the tmux id aand corresponding task suite, avoiding confusion up till now.
+| tmux_id | task | gpu_id |
+|-----|-----|-----|
+| dsrl_pi0_0   | libero_90_task57 | 0 |
+| dsrl_pi0_1 | libero_object_02 0-4 | 4 |
+| dsrl_pi0_2 | libero_object_02 5-9 | 5 |
+| dsrl_pi0_3   | libero_90_compare_01 | 4 |
+
+Use libero_90_compare_01, libero_90_task57, and finished task57 with old ```run.sh``` to check my new ```run_suite.sh``` accuracy.
