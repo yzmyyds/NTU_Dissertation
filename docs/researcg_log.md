@@ -182,8 +182,21 @@ Record the tmux id aand corresponding task suite, avoiding confusion up till now
 | tmux_id | task | gpu_id |
 |-----|-----|-----|
 | dsrl_pi0_0   | libero_90_task57 | 0 |
-| dsrl_pi0_1 | libero_object_02 0-4 | 4 |
-| dsrl_pi0_2 | libero_object_02 5-9 | 5 |
+| dsrl_pi0_1 | libero_object_01 0-4 | 4 |
+| dsrl_pi0_2 | libero_object_01 5-9 | 5 |
 | dsrl_pi0_3   | libero_90_compare_01 | 4 |
 
 Use libero_90_compare_01, libero_90_task57, and finished task57 with old ```run.sh``` to check my new ```run_suite.sh``` accuracy.
+
+## [2026-02-27]
+- The libero_object_02 0-4 finished. GPU 4 get free. 
+- Tried to use origin script (```run_libero.sh```) to run task 57 to check if my own script had error or confliction.
+  
+Comparing the results, there must be error in my script. After detailed checking, I found my script didn't redefine the parameter ```query_freq```. The default value of is -1 and researcher recommend 20. So the pi0 will update action trunk each frame instead of updating after several trials, even causing confliction. Therefore, killed all tasks and run the task 0-4 of libero and task57 again.  
+
+| tmux_id | task | gpu_id |
+|-----|-----|-----|
+| dsrl_pi0_0   | libero_90_task57 (error version)| 0 |
+| dsrl_pi0_1 | libero_object_02 0-4 | 4 |
+| dsrl_pi0_2 | libero_compare 57 | 5 |
+| dsrl_pi0_3   | libero_object_02 5-9 | 4 |
